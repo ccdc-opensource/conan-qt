@@ -1,0 +1,21 @@
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: ccdc-opensource/conan-azure-devops
+      ref: refs/heads/development
+      endpoint: github
+
+extends:
+  template: third-party-library-all-platforms-from-local-recipe-split.yml@templates
+  parameters:
+    package: qt
+    package_version: 5.15.8
+    destination_repository: ccdc-3rdparty-conan
+    build_types:
+      - Release
+    platforms:
+      - centos7_gcc10
+      - ubuntu2004_gcc10
+      - macos1015_xcode12
+      - win2019_vs2019
