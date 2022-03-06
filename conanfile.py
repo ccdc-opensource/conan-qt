@@ -366,9 +366,9 @@ class QtConan(ConanFile):
             self.requires("openal/1.21.1")
         if self.options.get_safe("with_libalsa", False):
             self.requires("libalsa/1.2.4")
-        # if self.options.qtactiveqt or (self.options.gui and self.settings.os in ["Linux", "FreeBSD"]):
-        #     # this is needed by some xorg libraries but also by some dependencies so let's bring it in...
-        #     self.requires("libuuid/1.0.3")
+        if self.options.qtactiveqt or (self.options.gui and self.settings.os in ["Linux", "FreeBSD"]):
+            # this is needed by some xorg libraries but also by some dependencies so let's bring it in...
+            self.requires("libuuid/1.0.3")
         if self.options.gui and self.settings.os in ["Linux", "FreeBSD"]:
             self.requires("xorg/system")
             if not tools.cross_building(self, skip_x64_x86=True):
